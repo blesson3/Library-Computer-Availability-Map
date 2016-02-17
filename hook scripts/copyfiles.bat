@@ -1,4 +1,8 @@
-copy "login.pl" C:\Windows\System32\GroupPolicy\User\Scripts\Logon\
+copy "login.exe" C:\Windows\System32\GroupPolicy\User\Scripts\Logon\
 yes
-copy "logout.pl" C:\Windows\System32\GroupPolicy\User\Scripts\Logoff\
+copy "logout.exe" C:\Windows\System32\GroupPolicy\User\Scripts\Logoff\
+yes
+copy "shutdown.exe" C:\Windows\System32\GroupPolicy\Machine\Scripts\Shutdown\
+yes
+copy "logout.exe" C:\Windows\System32\GroupPolicy\Machine\Scripts\Startup
 yes

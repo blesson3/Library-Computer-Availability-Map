@@ -15,7 +15,7 @@ $ua->timeout(60);
 
 #send the HTTP request with the status of 1 and computer name
 $request = $ua->post('http://209.140.207.237/statuschange.php',
-                ["status" => 1,
+                ["status" => -1,
                 "workstation" => $compName]);
 
 #if successful log 200 status else quit and log error
