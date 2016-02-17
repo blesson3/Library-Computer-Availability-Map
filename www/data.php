@@ -18,9 +18,25 @@ echo "<html><head><meta http-equiv='refresh' content='$refreshSec' URL='$page'><
 
 foreach ($results as $r) {
   $floor = (intval($r["computer_number"]) <= 18) ? "the 1st floor" : "the 2nd floor";
-  echo "<b><font color='".($r["status"] == 1 ? 'red':'green')."'>".$r["computer_name"]."</font></b> on $floor is <font color='".($r["status"] == 1 ? 'red':'green')."'>".($r["status"] == 1 ? "being used": "open")."</font>. Last updated ".$r["updated_at"]."<br>";
+  switch ($r["status"]) {
+    case 1:
+      $vStatus = "being used";
+      $tColor = "red";
+      break;
+    case 0:
+      $vStatus = "open";
+      $tColor = "green";
+      break;
+    case -1:
+      $vStatus = "shutdown";
+      $tColor = "gray";
+      break;
+    default:
+      $vStatus = "unknown status";
+      $tColor = "black";
+  }
+  echo "<b><font color='$tColor'>".$r["computer_name"]."</font></b> on $floor is <font color='$tColor'>$vStatus</font>. Last updated ".$r["updated_at"]."<br>";
 }
 
 echo "</body></html>";
-
 ?>

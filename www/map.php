@@ -15,15 +15,13 @@
 }
 
 dt.available_comp_status_icon {
-  /*background: no-repeat url('available.png');*/
   background-color: green;
 }
 dt.unavailable_comp_status_icon {
-  /*background: no-repeat url('unavailable.png');*/
   background-color: red;
 }
 dt.shutdown_comp_status_icon {
-  background-color: black;
+  background-color: gray;
 }
 
 dt.available_comp_status_icon, dt.unavailable_comp_status_icon, dt.shutdown_comp_status_icon {
@@ -45,11 +43,9 @@ dt.icon {
 
 <?php
 
-#add your database username and password
-$db_host = "localhost";
-$user="mattblessed";
-$password="000373965";
-$database="computer_availability";
+# require the db credentials file
+require 'Database.php';
+
 try {
   $dbh = new PDO("mysql:host=$db_host;dbname=$database", $user, $password);
   $openQ = $dbh->prepare("SELECT * FROM compstatus where status = 0");
